@@ -16,10 +16,10 @@
     </a>
 
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="/Вход" class="nav-link active" aria-current="page">Вход</a></li>
+        <li class="nav-item"><a href="/welcome" class="nav-link active" aria-current="page">Вход</a></li>
         <li class="nav-item"><a href="/Находки" class="nav-link">Находки</a></li>
         <li class="nav-item"><a href="/Потеряшки" class="nav-link">Потеряшки</a></li>
-        <li class="nav-item"><a href="/Аккаунт" class="nav-link">Ваш аккаунт</a></li>
+        <li class="nav-item"><a href="/profile" class="nav-link">Ваш аккаунт</a></li>
         <li class="nav-item"><a href="/О нас" class="nav-link">О нас</a></li>
     </ul>
 </header>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="col mb-3">
-        <h5>Section</h5>
+        <h5>123</h5>
         <ul class="nav flex-column">
             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
             <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
