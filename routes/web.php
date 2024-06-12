@@ -15,33 +15,41 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', function () {
     return view('index');
-});
-Route::get('/Находки', function () {
+})->name('Main');
+Route::get('/nahodki', function () {
     return view('found');
-});
-Route::get('/Потеряшки', function () {
+})->name('found');
+Route::get('/poteryashki', function () {
     return view('lost');
-});
-Route::get('/О нас', function () {
+})->name('lost');
+Route::get('/o_nas', function () {
     return view('aboutas');
-});
-Route::get('/Вход', function () {
-    return view('');
-});
-Route::get('/Регистрация', function () {
-    return view('registration');
-});
+})->name('aboutas');
+//Route::get('/registration', function () {
+//    return view('registration');
+//})->name('registration');
 
+Route::get('/foundcreate', function () {
+    return view('foundcreate');
+})->name('foundcreateform');
 
+Route::get('/lostcreate',function (){
+    return "lostcreate";
+})->name('lostcreateform');
 
 Route::get('/welcome', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/found/submit','App\Http\Controllers\FoundController@submit')->name('foundcreate');
+
+Route::post('/lost/submit',function (){
+    return "lost";
+})->name('lostcreate');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 require __DIR__.'/auth.php';

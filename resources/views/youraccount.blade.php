@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('main_content')
-Ваш аккаунт
+    Ваш аккаунт
 @endsection

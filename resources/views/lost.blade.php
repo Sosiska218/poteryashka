@@ -1,4 +1,6 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('main_content')
-<p>Потерянное</p>
+    <a href="{{route('lostcreateform')}}"><button class="btn btn-primary">Добавить предмет</button></a>
+    <div class="row justify-content-center">
+    <p>Потерянное</p>
 @endsection

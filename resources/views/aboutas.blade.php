@@ -1,5 +1,5 @@
-@extends('layout')
+@extends('layouts.layout')
 
 @section('main_content')
-<p>О нас</p>
+    <p>О нас</p>
 @endsection
