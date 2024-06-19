@@ -17,35 +17,28 @@ Route::get('/', function () {
     return view('index');
 })->name('Main');
 Route::get('/nahodki', function () {
-    return view('found');
+    $founds = \App\Models\Found::query()->latest()->get();
+    return view('found', compact(['founds']));
 })->name('found');
 Route::get('/poteryashki', function () {
-    return view('lost');
+    $losts = \App\Models\Lost::query()->latest()->get();
+    return view('lost', compact(['losts']));
 })->name('lost');
 Route::get('/o_nas', function () {
     return view('aboutas');
 })->name('aboutas');
-//Route::get('/registration', function () {
-//    return view('registration');
-//})->name('registration');
 
 Route::get('/foundcreate', function () {
     return view('foundcreate');
-})->name('foundcreateform');
+})->name('foundcreateform')->middleware('auth');
 
 Route::get('/lostcreate',function (){
-    return "lostcreate";
-})->name('lostcreateform');
+    return view('lostcreate');
+})->name('lostcreateform')->middleware('auth');
 
-Route::get('/welcome', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/found/submit',[\App\Http\Controllers\FoundController::class, 'submit'])->middleware('auth')->name('foundcreate');
 
-Route::post('/found/submit','App\Http\Controllers\FoundController@submit')->name('foundcreate');
-
-Route::post('/lost/submit',function (){
-    return "lost";
-})->name('lostcreate');
+Route::post('/lost/submit', [\App\Http\Controllers\LostController::class, 'submit'])->name('lostcreate')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

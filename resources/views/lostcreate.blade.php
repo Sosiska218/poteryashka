@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 @section('main_content')
     <div class="container">
-        <form action="{{route('foundcreate')}}" method="post">
+        <form action="{{route('lostcreate')}}" method="post">
             @csrf
             <div class="form-group">
-                <label for="itemname">Название предмета</label>
+                <label for="title">Название предмета</label>
                 <input type="text" name="title" placeholder="Название предмета" id="itemname" class="form-control w-500">
             </div>
             <div class="form-group">

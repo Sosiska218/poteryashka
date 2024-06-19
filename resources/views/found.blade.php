@@ -1,28 +1,29 @@
 @extends('layouts.layout')
 @section('main_content')
-    <a href="{{route('foundcreateform')}}"><button class="btn btn-primary">Добавить предмет</button></a>
+    <a href="{{route('foundcreateform')}}">
+        <button class="btn btn-primary">Добавить предмет</button>
+    </a>
     <div class="d-flex justify-content-around">
-        <table>
+        @isset($founds)
+            <table>
                 <tr>
-                    <th colspan="2">Модель</th>
-                    <th>Цена</th>
-                    <th>Количество</th>
-                    <th>Итого</th>
+
+                    <th>Название</th>
+                    <th>Описание</th>
                 </tr>
-                <tr>
-                    <td><img src="https://html5book.ru/wp-content/uploads/2015/04/dress-2.png"></td>
-                    <td>Платье с цветочным принтом</td>
-                    <td>2500</td>
-                    <td>1</td>
-                    <td>2500</td>
-                </tr>
-                <tr>
-                    <td><img src="https://html5book.ru/wp-content/uploads/2015/04/dress-3.png"></td>
-                    <td>Платье с боковыми вставками</td>
-                    <td>3000</td>
-                    <td>1</td>
-                    <td>3000</td>
-                </tr>
-    </table>
+                @foreach($founds as $found)
+                    <tr>
+                        <td>{{ $found->title }}</td>
+                        <td>{{ $found->description }}</td>
+                        @if(auth()->user()?->id === $found->user_id)
+                            <td>Ваше объявление</td>
+                        @else
+                            <td><a href="mailto:{{ $found->creator->email }}">Написать на почту</a></td>
+                            <td><a href="tel:{{ $found->creator->phone }}">Позвонить</a></td>
+                        @endif
+                    </tr>
+                @endforeach
+            </table>
+        @endisset
     </div>
 @endsection

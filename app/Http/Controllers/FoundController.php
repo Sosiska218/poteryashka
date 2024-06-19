@@ -2,25 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Found;
+use App\Http\Requests\Found\StoreRequest;
+use Illuminate\Http\RedirectResponse;
 
 class FoundController extends Controller
 {
-    public function submit(Request $req)
+    public function submit(StoreRequest $request): RedirectResponse
     {
-        $found = new Found();
-        $found->date=$req->input('date');
-        $found->email=$req->input('email');
-        $found->number=$req->input('number');
-        $found->itemname=$req->input('itemname');
-        $found->description=$req->input('description');
-        $found->photo=$req->input('photo');
+        $user = auth()->user();
 
-        $found->save();
+        $user->founds()->create([
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+        ]);
 
         return redirect()->route('found');
-
-
     }
 }
