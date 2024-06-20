@@ -1,6 +1,5 @@
 @extends('layouts.layout')
 @section('main_content')
-    <h1 style="text-align: center">главная страница</h1>
     <div class="menu-buttons">
         <div class="menu-button">
             <a href="{{ route('found') }}">
